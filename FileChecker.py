@@ -6,16 +6,9 @@ from tkinter import ttk, filedialog, messagebox
 from pathlib import Path
 from datetime import datetime
 
-try:
-    import openpyxl
-    from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
-    from openpyxl.utils import get_column_letter
-except ImportError:
-    import subprocess, sys
-    subprocess.check_call([sys.executable, "-m", "pip", "install", "openpyxl"])
-    import openpyxl
-    from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
-    from openpyxl.utils import get_column_letter
+import openpyxl
+from openpyxl.styles import Font, PatternFill, Alignment, Border, Side
+from openpyxl.utils import get_column_letter
 
 CONFIG_FILE = "filechecker_config.json"
 C = {
