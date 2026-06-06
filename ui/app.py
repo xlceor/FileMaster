@@ -1,4 +1,5 @@
 
+import sys
 import os
 import tkinter as tk
 from tkinter import ttk, filedialog, messagebox
@@ -11,7 +12,16 @@ from utils.config_manager import load_config, save_config
 class FileCheckerApp(tk.Tk):
     def __init__(self):
         super().__init__()
-        self.title("FileChecker v1.1")
+        self.title("FileChecker v1.0")
+
+        
+        base_path = getattr(sys, '_MEIPASS', os.path.dirname(os.path.abspath(__file__)))
+        if '_MEIPASS' not in sys.__dict__:
+            base_path = os.path.dirname(base_path)
+
+        icon_path = os.path.join(base_path, "assets", "icon.ico")
+        self.iconbitmap(icon_path)
+
         self.resizable(False, False)
         self.configure(bg=C["bg"])
 
@@ -21,6 +31,7 @@ class FileCheckerApp(tk.Tk):
         self.folder_var         = tk.StringVar(value=self.cfg.get("last_folder", ""))
         self.source_excel_var   = tk.StringVar(value=self.cfg.get("last_source_excel", ""))
         self.excel_var          = tk.StringVar(value=self.cfg.get("last_excel", ""))
+        self.output_var         = tk.StringVar(value=self.cfg.get("last_output", ""))
         self.recursive          = tk.BooleanVar(value=self.cfg.get("recursive", False))
         self.ignore_ext         = tk.BooleanVar(value=self.cfg.get("ignore_ext", False))
         self.ignore_case        = tk.BooleanVar(value=self.cfg.get("ignore_case", True))
@@ -77,6 +88,9 @@ class FileCheckerApp(tk.Tk):
 
         self.excel_section_label = self._section(body, "EXCEL MAESTRO")
         self.excel_frame = self._path_row(body, self.excel_var, self._browse_excel, placeholder="Selecciona el archivo Excel maestro...")
+
+        self._section(body, "CARPETA DE DESTINO (REPORTES)")
+        self._path_row(body, self.output_var, self._browse_output, placeholder="Donde se guardarán los reportes...")
 
         self._section(body, "OPCIONES")
         opts = tk.Frame(body, bg=C["surface"], padx=12, pady=8)
@@ -184,6 +198,11 @@ class FileCheckerApp(tk.Tk):
         if f:
             self.excel_var.set(f)
 
+    def _browse_output(self):
+        d = filedialog.askdirectory(title="Seleccionar carpeta de destino")
+        if d:
+            self.output_var.set(d)
+
     def _center_window(self):
         self.update_idletasks()
         w, h = self.winfo_width(), self.winfo_height()
@@ -225,14 +244,20 @@ class FileCheckerApp(tk.Tk):
             rec = self.recursive.get()
             iex = self.ignore_ext.get()
             ica = self.ignore_case.get()
+            out_dir = self.output_var.get().strip()
 
             if mode == "export":
-                out = export_names_report(source_path, rec, iex, is_placas, ts)
+                filename = f"Reporte_Nombres_{ts}.xlsx"
+                out_path = os.path.join(out_dir, filename) if out_dir else filename
+                out = export_names_report(source_path, rec, iex, is_placas, ts, output_path=out_path)
             else:
+                filename = f"Reporte_Comparacion_{ts}.xlsx"
+                out_path = os.path.join(out_dir, filename) if out_dir else filename
                 out = comparison_report(
                     source_path, excel_master, 
                     rec, iex, ica, is_placas, ts, 
-                    is_excel_source=(mode == "compare_excel")
+                    is_excel_source=(mode == "compare_excel"),
+                    output_path=out_path
                 )
 
             self.progress.stop()
@@ -257,6 +282,7 @@ class FileCheckerApp(tk.Tk):
             "last_folder":       self.folder_var.get(),
             "last_source_excel": self.source_excel_var.get(),
             "last_excel":        self.excel_var.get(),
+            "last_output":       self.output_var.get(),
             "recursive":         self.recursive.get(),
             "ignore_ext":        self.ignore_ext.get(),
             "ignore_case":       self.ignore_case.get(),

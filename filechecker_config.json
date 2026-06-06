@@ -1,7 +1,11 @@
 {
+  "mode": "compare",
   "last_folder": "/Users/quiqueoso/Downloads",
-  "last_excel": "",
-  "recursive": false,
-  "ignore_ext": false,
-  "ignore_case": true
+  "last_source_excel": "/Users/quiqueoso/FileMaster/Reporte_Nombres_2026-06-06_13-58.xlsx",
+  "last_excel": "/Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx",
+  "last_output": "/Users/quiqueoso/Downloads",
+  "recursive": true,
+  "ignore_ext": true,
+  "ignore_case": true,
+  "tab": "standard"
 }

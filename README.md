@@ -54,7 +54,7 @@ FileMaster/
 1. **Python 3.8+**: Ensure you have Python installed.
 2. **Dependencies**:
    ```bash
-   pip install openpyxl
+   pip install -r requirements.txt
    ```
 3. **Run the App**:
    ```bash
