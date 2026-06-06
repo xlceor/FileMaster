@@ -51,13 +51,12 @@ def export_names_report(folder: str, recursive: bool, ignore_ext: bool, preproce
     return out
 
 
-def comparison_report(
+def run_comparison(
     source_path: str, master_path: str,
     recursive: bool, ignore_ext: bool, ignore_case: bool, preprocess: bool,
-    timestamp: str, is_excel_source: bool = False,
-    output_path: str = None
-) -> str:
-    """Genera un reporte profesional usando pandas con resultados y resumen."""
+    is_excel_source: bool = False
+) -> tuple[dict, dict, dict, dict]:
+    """Ejecuta la lógica de comparación y devuelve los diccionarios de resultados."""
     from core.excel_loader import load_excel
     from core.comparator import compare_dicts, compare_files
     
@@ -84,6 +83,20 @@ def comparison_report(
         missing_dict = {id: master_dict[id] for id in results["missing"]}
         # For extra files in folder, we don't have extra columns, just the filename
         extra_dict = {f: {"Info": "Archivo extra en carpeta"} for f in results["extra"]}
+
+    return master_dict, found_dict, missing_dict, extra_dict
+
+
+def comparison_report(
+    source_path: str, master_path: str,
+    recursive: bool, ignore_ext: bool, ignore_case: bool, preprocess: bool,
+    timestamp: str, is_excel_source: bool = False,
+    output_path: str = None
+) -> str:
+    """Genera un reporte profesional usando pandas con resultados y resumen."""
+    master_dict, found_dict, missing_dict, extra_dict = run_comparison(
+        source_path, master_path, recursive, ignore_ext, ignore_case, preprocess, is_excel_source
+    )
 
     out = output_path if output_path else f"Reporte_Comparacion_{timestamp}.xlsx"
     report_excel(out, found_dict, missing_dict, extra_dict)

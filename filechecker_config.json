@@ -7,5 +7,5 @@
   "recursive": true,
   "ignore_ext": true,
   "ignore_case": true,
-  "tab": "standard"
+  "preprocess": false
 }
