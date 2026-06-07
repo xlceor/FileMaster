@@ -1,0 +1,62 @@
+{
+  "app_title": "FileChecker Enterprise",
+  "nav_config": "⚙  Configuración",
+  "nav_results": "📊  Resultados",
+  "header_config": "Configuración del Sistema",
+  "header_results": "Panel de Resultados",
+  "status_ready": "Sistema Listo",
+  "status_processing": "Procesando operación... por favor espere.",
+  "status_complete": "✔ Operación finalizada.",
+  "status_error": "✖ Error: {error}",
+  
+  "section_operation": "1. Tipo de Operación",
+  "section_sources": "2. Orígenes de Datos",
+  "section_destination": "3. Destino de Reportes",
+  "section_options": "4. Opciones de Procesamiento",
+  
+  "mode_export": "📤  Exportar nombres de carpeta",
+  "mode_compare": "🔍  Comparar carpeta vs Excel maestro",
+  "mode_compare_excel": "📊  Comparar Excel vs Excel maestro",
+  
+  "lbl_folder": "Carpeta de Archivos",
+  "lbl_source_excel": "Excel de Entrada",
+  "lbl_master_excel": "Excel Maestro",
+  "lbl_output_folder": "Carpeta de Salida",
+  
+  "btn_browse": "Buscar...",
+  "btn_run": "⚡ INICIAR PROCESAMIENTO",
+  "btn_export_excel": "📥 EXPORTAR RESULTADOS A EXCEL",
+  
+  "opt_recursive": "🔁 Búsqueda recursiva (subcarpetas)",
+  "opt_ignore_ext": "🔤 Ignorar extensión al comparar",
+  "opt_ignore_case": "🔡 Ignorar mayúsculas/minúsculas",
+  "opt_preprocess": "🛠 Procesamiento especial (Placas)",
+  
+  "err_val_title": "Error de Validación",
+  "err_val_folder": "Por favor seleccione una carpeta de archivos válida.",
+  "err_val_source_excel": "Por favor seleccione un Excel de entrada válido.",
+  "err_val_master_excel": "Por favor seleccione un Excel maestro válido.",
+  
+  "msg_success_title": "Operación Exitosa",
+  "msg_success_export": "✔ Reporte generado: {path}\n\n¿Desea abrir el archivo ahora?",
+  "msg_success_compare": "✔ Comparación finalizada con éxito.",
+  "msg_success_exported": "✔ Reporte exportado: {path}",
+  
+  "msg_err_title": "Error en la Operación",
+  "msg_err_desc": "Se produjo un error durante la operación:\n\n{error}\n\n¿Desea abrir el archivo de registro (logs) para ver más detalles?",
+  
+  "results_summary": "Esperados: {total}  |  Encontrados: {found}  |  Faltantes: {missing}  |  Sobrantes: {extra}",
+  "results_no_data": "No hay resultados disponibles. Inicie un proceso en Configuración.",
+  "results_col_found": "Encontrados",
+  "results_col_missing": "Faltantes",
+  "results_col_extra": "Sobrantes",
+  "results_col_header": "Identificador",
+  
+  "help_tooltip_recursive": "Busca archivos dentro de subcarpetas de forma ilimitada.",
+  "help_tooltip_ignore_ext": "Compara nombres sin considerar la extensión (ej. 'doc.pdf' coincide con 'doc.docx').",
+  "help_tooltip_ignore_case": "Compara sin importar mayúsculas o minúsculas (ej. 'FOTO.JPG' coincide con 'foto.jpg').",
+  "help_tooltip_preprocess": "Extrae el texto antes del primer guion (-) o guion bajo (_) para comparar (ej. 'placa123-A' se compara como 'placa123').",
+  
+  "help_title": "Guía de Formato de Excel",
+  "help_desc": "Requisitos para archivos Excel:\n\n1. El primer renglón debe ser el encabezado (título de columna).\n2. El programa busca la primera columna o una columna llamada 'placas'.\n3. Los datos de comparación inician a partir de la fila 2.\n4. Soporta formatos .xlsx y .xls."
+}

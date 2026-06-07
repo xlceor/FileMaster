@@ -1,0 +1,62 @@
+{
+  "app_title": "FileChecker Enterprise",
+  "nav_config": "⚙  Configuration",
+  "nav_results": "📊  Results",
+  "header_config": "System Configuration",
+  "header_results": "Results Dashboard",
+  "status_ready": "System Ready",
+  "status_processing": "Processing operation... please wait.",
+  "status_complete": "✔ Operation finished.",
+  "status_error": "✖ Error: {error}",
+  
+  "section_operation": "1. Operation Type",
+  "section_sources": "2. Data Sources",
+  "section_destination": "3. Reports Destination",
+  "section_options": "4. Processing Options",
+  
+  "mode_export": "📤  Export folder names",
+  "mode_compare": "🔍  Compare folder vs Master Excel",
+  "mode_compare_excel": "📊  Compare Excel vs Master Excel",
+  
+  "lbl_folder": "Files Folder",
+  "lbl_source_excel": "Input Excel",
+  "lbl_master_excel": "Master Excel",
+  "lbl_output_folder": "Output Folder",
+  
+  "btn_browse": "Browse...",
+  "btn_run": "⚡ START PROCESSING",
+  "btn_export_excel": "📥 EXPORT RESULTS TO EXCEL",
+  
+  "opt_recursive": "🔁 Recursive search (subfolders)",
+  "opt_ignore_ext": "🔤 Ignore extension when comparing",
+  "opt_ignore_case": "🔡 Ignore capitalization",
+  "opt_preprocess": "🛠 Special processing (Placas)",
+  
+  "err_val_title": "Validation Error",
+  "err_val_folder": "Please select a valid files folder.",
+  "err_val_source_excel": "Please select a valid input Excel file.",
+  "err_val_master_excel": "Please select a valid master Excel file.",
+  
+  "msg_success_title": "Operation Successful",
+  "msg_success_export": "✔ Report generated: {path}\n\nDo you want to open the file now?",
+  "msg_success_compare": "✔ Comparison completed successfully.",
+  "msg_success_exported": "✔ Report exported: {path}",
+  
+  "msg_err_title": "Operation Error",
+  "msg_err_desc": "An error occurred during operation:\n\n{error}\n\nDo you want to open the log file to see more details?",
+  
+  "results_summary": "Expected: {total}  |  Found: {found}  |  Missing: {missing}  |  Extra: {extra}",
+  "results_no_data": "No results available. Please run a process in Configuration.",
+  "results_col_found": "Found",
+  "results_col_missing": "Missing",
+  "results_col_extra": "Extra",
+  "results_col_header": "Identifier",
+  
+  "help_tooltip_recursive": "Search for files within subfolders recursively.",
+  "help_tooltip_ignore_ext": "Compare names ignoring file extension (e.g. 'doc.pdf' matches 'doc.docx').",
+  "help_tooltip_ignore_case": "Compare ignoring capital/lowercase letters (e.g. 'PHOTO.JPG' matches 'foto.jpg').",
+  "help_tooltip_preprocess": "Extract text before the first hyphen (-) or underscore (_) to compare (e.g. 'plate123-A' matches as 'plate123').",
+  
+  "help_title": "Excel Format Guide",
+  "help_desc": "Requirements for Excel files:\n\n1. The first row must contain column headers.\n2. The program searches for the first column or a column named 'placas'.\n3. Data rows start from row 2.\n4. Supports .xlsx and .xls formats."
+}

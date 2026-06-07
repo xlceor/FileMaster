@@ -1,0 +1,92 @@
+2026-06-07 11:51:53,917 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 11:51:54,244 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
+2026-06-07 11:51:54,984 - FileMaster - DEBUG - Configuración cargada con éxito: {'mode': 'compare', 'last_folder': '/Users/quiqueoso/Downloads', 'last_source_excel': '/Users/quiqueoso/FileMaster/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_excel': '/Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_output': '/Users/quiqueoso/Downloads', 'recursive': True, 'ignore_ext': True, 'ignore_case': True, 'preprocess': False, 'lang': 'es', 'theme': 'light'}
+2026-06-07 11:51:54,984 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 11:51:54,984 - FileMaster - INFO - Idioma de interfaz cambiado a: es
+2026-06-07 11:52:03,146 - FileMaster - DEBUG - Configuración guardada en filechecker_config.json: {'mode': 'compare', 'last_folder': '/Users/quiqueoso/Downloads', 'last_source_excel': '/Users/quiqueoso/FileMaster/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_excel': '/Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_output': '/Users/quiqueoso/Downloads', 'recursive': True, 'ignore_ext': True, 'ignore_case': True, 'preprocess': False, 'lang': 'es', 'theme': 'light'}
+2026-06-07 11:52:03,147 - FileMaster - INFO - Iniciando procesamiento de tarea...
+2026-06-07 11:52:03,158 - FileMaster - INFO - Iniciando run_comparison. Origen: /Users/quiqueoso/Downloads, Maestro: /Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx
+2026-06-07 11:52:03,236 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['Archivo']
+2026-06-07 11:52:03,249 - FileMaster - INFO - Cargados con éxito 1034 registros de Excel desde /Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx
+2026-06-07 11:52:03,249 - FileMaster - DEBUG - Plantilla de columnas del maestro: ['Archivo']
+2026-06-07 11:52:03,249 - FileMaster - INFO - Iniciando escaneo de carpeta: /Users/quiqueoso/Downloads (recursivo=True, ignorar_ext=True, preprocesar=False)
+2026-06-07 11:52:03,370 - FileMaster - INFO - Escaneo finalizado. Encontrados 1103 archivos únicos.
+2026-06-07 11:52:03,371 - FileMaster - DEBUG - Ejecutando compare_files: 1034 esperados, 1103 encontrados (ignorar_caso=True)
+2026-06-07 11:52:03,371 - FileMaster - INFO - Resultado compare_files: 843 encontrados, 191 faltantes, 258 sobrantes
+2026-06-07 11:52:03,371 - FileMaster - INFO - run_comparison completado. Encontrados: 843, Faltantes: 191, Sobrantes: 258
+2026-06-07 11:52:07,580 - FileMaster - INFO - Iniciando exportación de resultados...
+2026-06-07 11:52:07,581 - FileMaster - INFO - Generando reporte Excel estructurado y diseñado en: /Users/quiqueoso/Downloads/Reporte_Comparacion_2026-06-07_11-52.xlsx
+2026-06-07 11:52:07,916 - FileMaster - INFO - Reporte Excel escrito y diseñado exitosamente.
+2026-06-07 11:55:50,467 - FileMaster - DEBUG - Ejecutando compare_files: 3 esperados, 3 encontrados (ignorar_caso=False)
+2026-06-07 11:55:50,467 - FileMaster - INFO - Resultado compare_files: 2 encontrados, 1 faltantes, 1 sobrantes
+2026-06-07 11:55:50,467 - FileMaster - DEBUG - Ejecutando compare_files: 2 esperados, 3 encontrados (ignorar_caso=True)
+2026-06-07 11:55:50,467 - FileMaster - INFO - Resultado compare_files: 2 encontrados, 0 faltantes, 1 sobrantes
+2026-06-07 11:55:50,467 - FileMaster - DEBUG - Ejecutando compare_dicts: 3 esperados, 3 encontrados
+2026-06-07 11:55:50,467 - FileMaster - INFO - Resultado compare_dicts: 2 encontrados, 1 faltantes, 1 sobrantes
+2026-06-07 11:55:50,557 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner']
+2026-06-07 11:55:50,562 - FileMaster - INFO - Cargados con éxito 3 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-5/test_load_excel_basic0/master.xlsx
+2026-06-07 11:55:50,571 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Info', 'Info_2']
+2026-06-07 11:55:50,572 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-5/test_load_excel_unnamed_handli0/unnamed.xlsx
+2026-06-07 11:55:50,583 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['Placa', 'Detail']
+2026-06-07 11:55:50,585 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-5/test_load_excel_special_proces0/special.xlsx
+2026-06-07 11:55:50,587 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner', 'Detail']
+2026-06-07 11:55:50,589 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-5/test_load_csv0/data.csv
+2026-06-07 11:55:50,594 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner']
+2026-06-07 11:55:50,596 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-5/test_load_json0/data.json
+2026-06-07 11:55:50,597 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-5/test_scan_folder_non_recursive0 (recursivo=False, ignorar_ext=False, preprocesar=False)
+2026-06-07 11:55:50,597 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 11:55:50,600 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-5/test_scan_folder_recursive0 (recursivo=True, ignorar_ext=False, preprocesar=False)
+2026-06-07 11:55:50,600 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 11:55:50,604 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-5/test_scan_folder_ignore_ext0 (recursivo=False, ignorar_ext=True, preprocesar=False)
+2026-06-07 11:55:50,604 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 11:55:50,606 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-5/test_scan_folder_preprocess0 (recursivo=False, ignorar_ext=False, preprocesar=True)
+2026-06-07 11:55:50,606 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 11:58:02,195 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 11:58:02,675 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
+2026-06-07 11:58:03,546 - FileMaster - DEBUG - Configuración cargada con éxito: {'mode': 'compare', 'last_folder': '/Users/quiqueoso/Downloads', 'last_source_excel': '/Users/quiqueoso/FileMaster/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_excel': '/Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_output': '/Users/quiqueoso/Downloads', 'recursive': True, 'ignore_ext': True, 'ignore_case': True, 'preprocess': False, 'lang': 'es', 'theme': 'light'}
+2026-06-07 11:58:03,546 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 11:58:03,546 - FileMaster - INFO - Idioma de interfaz cambiado a: es
+2026-06-07 11:58:11,149 - FileMaster - DEBUG - Configuración guardada en filechecker_config.json: {'mode': 'compare', 'last_folder': '/Users/quiqueoso/Downloads', 'last_source_excel': '/Users/quiqueoso/FileMaster/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_excel': '/Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_output': '/Users/quiqueoso/Downloads', 'recursive': True, 'ignore_ext': True, 'ignore_case': True, 'preprocess': False, 'lang': 'es', 'theme': 'light'}
+2026-06-07 11:58:11,150 - FileMaster - INFO - Iniciando procesamiento de tarea...
+2026-06-07 11:58:11,161 - FileMaster - INFO - Iniciando run_comparison. Origen: /Users/quiqueoso/Downloads, Maestro: /Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx
+2026-06-07 11:58:11,194 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['Archivo']
+2026-06-07 11:58:11,206 - FileMaster - INFO - Cargados con éxito 1034 registros de Excel desde /Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx
+2026-06-07 11:58:11,206 - FileMaster - DEBUG - Plantilla de columnas del maestro: ['Archivo']
+2026-06-07 11:58:11,206 - FileMaster - INFO - Iniciando escaneo de carpeta: /Users/quiqueoso/Downloads (recursivo=True, ignorar_ext=True, preprocesar=False)
+2026-06-07 11:58:11,287 - FileMaster - INFO - Escaneo finalizado. Encontrados 1104 archivos únicos.
+2026-06-07 11:58:11,287 - FileMaster - DEBUG - Ejecutando compare_files: 1034 esperados, 1104 encontrados (ignorar_caso=True)
+2026-06-07 11:58:11,287 - FileMaster - INFO - Resultado compare_files: 843 encontrados, 191 faltantes, 259 sobrantes
+2026-06-07 11:58:11,288 - FileMaster - INFO - run_comparison completado. Encontrados: 843, Faltantes: 191, Sobrantes: 259
+2026-06-07 11:58:13,517 - FileMaster - INFO - Iniciando exportación de resultados...
+2026-06-07 11:58:13,517 - FileMaster - INFO - Generando reporte Excel estructurado y diseñado en: /Users/quiqueoso/Downloads/Reporte_Comparacion_2026-06-07_11-58.xlsx
+2026-06-07 11:58:13,842 - FileMaster - INFO - Reporte Excel escrito y diseñado exitosamente.
+2026-06-07 11:59:54,944 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 12:00:25,047 - FileMaster - DEBUG - Ejecutando compare_files: 3 esperados, 3 encontrados (ignorar_caso=False)
+2026-06-07 12:00:25,047 - FileMaster - INFO - Resultado compare_files: 2 encontrados, 1 faltantes, 1 sobrantes
+2026-06-07 12:00:25,047 - FileMaster - DEBUG - Ejecutando compare_files: 2 esperados, 3 encontrados (ignorar_caso=True)
+2026-06-07 12:00:25,047 - FileMaster - INFO - Resultado compare_files: 2 encontrados, 0 faltantes, 1 sobrantes
+2026-06-07 12:00:25,048 - FileMaster - DEBUG - Ejecutando compare_dicts: 3 esperados, 3 encontrados
+2026-06-07 12:00:25,048 - FileMaster - INFO - Resultado compare_dicts: 2 encontrados, 1 faltantes, 1 sobrantes
+2026-06-07 12:00:25,133 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner']
+2026-06-07 12:00:25,139 - FileMaster - INFO - Cargados con éxito 3 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-6/test_load_excel_basic0/master.xlsx
+2026-06-07 12:00:25,146 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Info', 'Info_2']
+2026-06-07 12:00:25,147 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-6/test_load_excel_unnamed_handli0/unnamed.xlsx
+2026-06-07 12:00:25,153 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['Placa', 'Detail']
+2026-06-07 12:00:25,154 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-6/test_load_excel_special_proces0/special.xlsx
+2026-06-07 12:00:25,156 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner', 'Detail']
+2026-06-07 12:00:25,158 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-6/test_load_csv0/data.csv
+2026-06-07 12:00:25,163 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner']
+2026-06-07 12:00:25,164 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-6/test_load_json0/data.json
+2026-06-07 12:00:25,166 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-6/test_scan_folder_non_recursive0 (recursivo=False, ignorar_ext=False, preprocesar=False)
+2026-06-07 12:00:25,166 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 12:00:25,167 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-6/test_scan_folder_recursive0 (recursivo=True, ignorar_ext=False, preprocesar=False)
+2026-06-07 12:00:25,167 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 12:00:25,168 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-6/test_scan_folder_ignore_ext0 (recursivo=False, ignorar_ext=True, preprocesar=False)
+2026-06-07 12:00:25,168 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 12:00:25,169 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-6/test_scan_folder_preprocess0 (recursivo=False, ignorar_ext=False, preprocesar=True)
+2026-06-07 12:00:25,169 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 12:00:25,568 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 12:00:26,288 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
+2026-06-07 12:00:26,908 - FileMaster - DEBUG - Configuración cargada con éxito: {'mode': 'compare', 'last_folder': '/Users/quiqueoso/Downloads', 'last_source_excel': '/Users/quiqueoso/FileMaster/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_excel': '/Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_output': '/Users/quiqueoso/Downloads', 'recursive': True, 'ignore_ext': True, 'ignore_case': True, 'preprocess': False, 'lang': 'es', 'theme': 'light'}
+2026-06-07 12:00:26,908 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 12:00:26,908 - FileMaster - INFO - Idioma de interfaz cambiado a: es

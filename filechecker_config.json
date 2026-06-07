@@ -7,5 +7,7 @@
   "recursive": true,
   "ignore_ext": true,
   "ignore_case": true,
-  "preprocess": false
+  "preprocess": false,
+  "lang": "es",
+  "theme": "light"
 }

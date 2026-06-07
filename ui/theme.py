@@ -1,16 +1,55 @@
-
 import tkinter as tk
 from tkinter import ttk
 from config import C
 
-def apply_theme(root):
-    """Aplica el estilo moderno y minimalista a la aplicación."""
+# Define Light and Dark Palettes
+PALETTES = {
+    "light": {
+        "bg":       "#F8F9FA",
+        "surface":  "#FFFFFF",
+        "panel":    "#E9ECEF",
+        "accent":   "#5E35B1",
+        "accent2":  "#7E57C2",
+        "green":    "#2E7D32",
+        "red":      "#C62828",
+        "yellow":   "#F9A825",
+        "cyan":     "#00838F",
+        "text":     "#212529",
+        "subtext":  "#6C757D",
+        "border":   "#DEE2E6",
+    },
+    "dark": {
+        "bg":       "#121212",
+        "surface":  "#1E1E1E",
+        "panel":    "#2D2D2D",
+        "accent":   "#7E57C2",
+        "accent2":  "#9575CD",
+        "green":    "#81C784",
+        "red":      "#E57373",
+        "yellow":   "#FBC02D",
+        "cyan":     "#00ACC1",
+        "text":     "#E0E0E0",
+        "subtext":  "#9E9E9E",
+        "border":   "#333333",
+    }
+}
+
+def apply_theme(root, mode: str = "light"):
+    """Aplica y reconfigura los estilos TTK modernos basados en el tema activo (light/dark)."""
     style = ttk.Style(root)
     
-    # Base configuration
-    style.theme_use('clam') # Use 'clam' as a base for customization
-    
-    # Configure Colors
+    # Force clam theme as base for custom styling
+    try:
+        style.theme_use('clam')
+    except Exception:
+        pass
+        
+    # Update global config color dictionary C in-place
+    palette = PALETTES.get(mode, PALETTES["light"])
+    for k, v in palette.items():
+        C[k] = v
+        
+    # Configure base elements
     style.configure('.',
         background=C["bg"],
         foreground=C["text"],
@@ -27,7 +66,7 @@ def apply_theme(root):
         font=("Segoe UI", 11, "bold")
     )
     
-    # Main Content Area
+    # Main Content Area & Card Frames
     style.configure('Main.TFrame', background=C["bg"])
     style.configure('Card.TFrame', background=C["surface"], relief="flat", borderwidth=0)
     
@@ -35,7 +74,7 @@ def apply_theme(root):
     style.configure('Group.TLabelframe', background=C["bg"], foreground=C["subtext"], font=("Segoe UI", 9, "bold"))
     style.configure('Group.TLabelframe.Label', background=C["bg"], foreground=C["subtext"])
     
-    # Buttons
+    # Accent Buttons (Primary)
     style.configure('Accent.TButton', 
         padding=(20, 10), 
         background=C["accent"], 
@@ -43,9 +82,11 @@ def apply_theme(root):
         font=("Segoe UI", 10, "bold")
     )
     style.map('Accent.TButton',
-        background=[('active', C["accent2"]), ('disabled', C["border"])]
+        background=[('active', C["accent2"]), ('disabled', C["border"])],
+        foreground=[('disabled', C["subtext"])]
     )
     
+    # Secondary Buttons
     style.configure('Secondary.TButton', 
         padding=(10, 5), 
         background=C["surface"], 
@@ -54,16 +95,18 @@ def apply_theme(root):
         font=("Segoe UI", 9)
     )
     style.map('Secondary.TButton',
-        background=[('active', C["panel"])]
+        background=[('active', C["panel"])],
+        foreground=[('active', C["text"])]
     )
 
-    # Treeview (Results)
+    # Treeview (Results Tables)
     style.configure('Treeview',
         background=C["surface"],
         foreground=C["text"],
         rowheight=30,
         fieldbackground=C["surface"],
-        font=("Segoe UI", 9)
+        font=("Segoe UI", 9),
+        borderwidth=0
     )
     style.map('Treeview',
         background=[('selected', C["accent"])],
@@ -76,7 +119,7 @@ def apply_theme(root):
         relief="flat"
     )
 
-    # Notebook (if still used) or Tabs
+    # Tabs (Notebook)
     style.configure('TNotebook', background=C["bg"], borderwidth=0)
     style.configure('TNotebook.Tab', 
         padding=(15, 5), 
@@ -96,6 +139,7 @@ def apply_theme(root):
         bordercolor=C["border"],
         lightcolor=C["border"],
         darkcolor=C["border"],
+        foreground=C["text"],
         relief="flat",
         padding=5
     )
