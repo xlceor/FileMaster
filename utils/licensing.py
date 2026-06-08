@@ -8,21 +8,25 @@ import time
 import json
 import jwt # PyJWT library
 
-# API URL - can be hardcoded as it's not a secret
-API_URL = "https://api.yourdomain.com/verify"
+API_URL = "http://localhost:3000/api/verify"
 
-# PUBLIC KEY for verifying the server-signed JWT lease
-# This is NOT a secret and can be hardcoded.
-# REPLACE WITH YOUR ACTUAL RSA PUBLIC KEY IN PEM FORMAT
 PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
-MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyJ23j... (your public key) ...nB8Z/wIDAQAB
------END PUBLIC KEY-----"""
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAvUHzMm3b91GzPl+5QpZX
+PJarRoFbUMtotGTFWmJir8sHI9av/UzcCfraFq8165hZQvy1H++fYjY46/6uuEWG
+ju/7znLbugqUyoJd44EGtuIIehjAkrWsM8HnKcRyXKP4x9wGRtRdb47C5+HL+Xw4
+6SOMuCazz0uOP4jHrzrei/LplVF9jau7sjH7PpO9XgO8b2ShJLuwSi2VWJGJrxJu
+C2qngJj5kLiN7uLfHzrUDhfhgRjG7q4MOEDzPZLp1pI0K73Ph6sQZ/n/GTKsoY/z
+MnASIs4/9CweqqldyPglDxgAfhhI1OrpdBZuWmTlRJ+X5sq3nJzAyIxPCVNdTSlV
+NwIDAQAB
+-----END PUBLIC KEY-----
+"""
 
 LEASE_FILE = os.path.expanduser("~/.filemaster_lease")
 
 def get_hardware_fingerprint():
     """
-    Generates a unique hardware fingerprint.
+    Generates a unique hardware fingerprint using multiple system sources
+    for increased stability across Windows and macOS.
     """
     info = {
         "processor": platform.processor(),
@@ -30,16 +34,24 @@ def get_hardware_fingerprint():
         "system": platform.system(),
         "machine": platform.machine(),
     }
-    
-    if platform.system() == "Windows":
-        try:
-            cmd = "wmic csproduct get uuid"
-            uuid_str = subprocess.check_output(cmd, shell=True).decode().split('\n')[1].strip()
-            info["uuid"] = uuid_str
-        except Exception:
-            pass
 
-    fingerprint_str = "|".join([str(v) for v in info.values()])
+    # Attempt to get system-specific unique identifiers
+    try:
+        if platform.system() == "Windows":
+            # Motherboard UUID
+            info["uuid"] = subprocess.check_output("wmic csproduct get uuid", shell=True).decode().split('\n')[1].strip()
+            # Disk Serial Number (C: drive)
+            info["disk_serial"] = subprocess.check_output("wmic diskdrive get serialnumber", shell=True).decode().split('\n')[1].strip()
+        elif platform.system() == "Darwin":  # macOS
+            # Hardware UUID
+            info["uuid"] = subprocess.check_output("ioreg -d2 -c IOPlatformExpertDevice | awk -F\\\" '/IOPlatformUUID/{print $(NF-1)}'", shell=True).decode().strip()
+            # Serial Number
+            info["serial"] = subprocess.check_output("ioreg -d2 -c IOPlatformExpertDevice | awk -F\\\" '/IOPlatformSerialNumber/{print $(NF-1)}'", shell=True).decode().strip()
+    except Exception:
+        # Fallback to base info if specific hardware commands fail
+        pass
+
+    fingerprint_str = "|".join([str(v) for v in info.values() if v])
     return hashlib.sha256(fingerprint_str.encode()).hexdigest()
 
 def verify_license(license_key: str):
