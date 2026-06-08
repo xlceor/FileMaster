@@ -4,3 +4,4 @@ pytest
 tkinterdnd2
 cryptography
 requests
+pyjwt

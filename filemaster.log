@@ -156,3 +156,29 @@
 2026-06-07 22:18:05,140 - FileMaster - INFO - run_comparison completado. Encontrados: 843, Faltantes: 191, Sobrantes: 259
 2026-06-07 22:20:14,543 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
 2026-06-07 22:20:15,239 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
+2026-06-08 09:02:27,733 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-08 09:02:28,481 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
+2026-06-08 09:34:42,440 - FileMaster - DEBUG - Ejecutando compare_files: 3 esperados, 3 encontrados (ignorar_caso=False)
+2026-06-08 09:34:42,440 - FileMaster - INFO - Resultado compare_files: 2 encontrados, 1 faltantes, 1 sobrantes
+2026-06-08 09:34:42,440 - FileMaster - DEBUG - Ejecutando compare_files: 2 esperados, 3 encontrados (ignorar_caso=True)
+2026-06-08 09:34:42,440 - FileMaster - INFO - Resultado compare_files: 2 encontrados, 0 faltantes, 1 sobrantes
+2026-06-08 09:34:42,441 - FileMaster - DEBUG - Ejecutando compare_dicts: 3 esperados, 3 encontrados
+2026-06-08 09:34:42,441 - FileMaster - INFO - Resultado compare_dicts: 2 encontrados, 1 faltantes, 1 sobrantes
+2026-06-08 09:34:42,536 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner']
+2026-06-08 09:34:42,538 - FileMaster - INFO - Cargados con éxito 3 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-8/test_load_excel_basic0/master.xlsx
+2026-06-08 09:34:42,547 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Info', 'Info_2']
+2026-06-08 09:34:42,548 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-8/test_load_excel_unnamed_handli0/unnamed.xlsx
+2026-06-08 09:34:42,554 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['Placa', 'Detail']
+2026-06-08 09:34:42,556 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-8/test_load_excel_special_proces0/special.xlsx
+2026-06-08 09:34:42,558 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner', 'Detail']
+2026-06-08 09:34:42,560 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-8/test_load_csv0/data.csv
+2026-06-08 09:34:42,563 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner']
+2026-06-08 09:34:42,564 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-8/test_load_json0/data.json
+2026-06-08 09:34:42,565 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-8/test_scan_folder_non_recursive0 (recursivo=False, ignorar_ext=False, preprocesar=False)
+2026-06-08 09:34:42,565 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-08 09:34:42,566 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-8/test_scan_folder_recursive0 (recursivo=True, ignorar_ext=False, preprocesar=False)
+2026-06-08 09:34:42,567 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-08 09:34:42,568 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-8/test_scan_folder_ignore_ext0 (recursivo=False, ignorar_ext=True, preprocesar=False)
+2026-06-08 09:34:42,568 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-08 09:34:42,569 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-8/test_scan_folder_preprocess0 (recursivo=False, ignorar_ext=False, preprocesar=True)
+2026-06-08 09:34:42,569 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.

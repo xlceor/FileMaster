@@ -4,14 +4,20 @@ import platform
 import subprocess
 import os
 import requests
-import hmac
 import time
 import json
-from cryptography.fernet import Fernet
- 
-API_URL = os.getenv("LICENSE_API_URL", "https://api.yourdomain.com/verify")
-SECRET_KEY = os.getenv("LICENSE_SECRET_KEY", "default-insecure-key-change-this").encode()
-ENCRYPTION_KEY = os.getenv("LICENSE_ENCRYPTION_KEY", "u-l_Jj23u-l_Jj23u-l_Jj23u-l_Jj23u-l_Jj23u-M=").encode()
+import jwt # PyJWT library
+
+# API URL - can be hardcoded as it's not a secret
+API_URL = "https://api.yourdomain.com/verify"
+
+# PUBLIC KEY for verifying the server-signed JWT lease
+# This is NOT a secret and can be hardcoded.
+# REPLACE WITH YOUR ACTUAL RSA PUBLIC KEY IN PEM FORMAT
+PUBLIC_KEY_PEM = """-----BEGIN PUBLIC KEY-----
+MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAyJ23j... (your public key) ...nB8Z/wIDAQAB
+-----END PUBLIC KEY-----"""
+
 LEASE_FILE = os.path.expanduser("~/.filemaster_lease")
 
 def get_hardware_fingerprint():
@@ -36,62 +42,66 @@ def get_hardware_fingerprint():
     fingerprint_str = "|".join([str(v) for v in info.values()])
     return hashlib.sha256(fingerprint_str.encode()).hexdigest()
 
-def sign_request(payload: str):
-    """Signs a payload using HMAC-SHA256."""
-    return hmac.new(SECRET_KEY, payload.encode(), hashlib.sha256).hexdigest()
-
 def verify_license(license_key: str):
     """
     Sends the activation request to the server.
+    The server will return a signed JWT lease upon successful activation.
     """
     fingerprint = get_hardware_fingerprint()
-    payload = f"{license_key}:{fingerprint}"
-    signature = sign_request(payload)
     
     response = requests.post(
         API_URL,
-        json={"key": license_key, "fingerprint": fingerprint, "signature": signature},
+        json={"key": license_key, "fingerprint": fingerprint},
         timeout=10
     )
     
     if response.status_code == 200:
-        save_local_lease(response.json())
-        return True
+        # Expecting the server to return a JWT token in the 'lease_token' field
+        response_data = response.json()
+        lease_token = response_data.get('lease_token')
+        if lease_token:
+            save_local_lease(lease_token)
+            return True
     return False
 
 def check_local_lease():
     """
-    Checks if a valid, non-expired local lease exists.
+    Checks if a valid, non-expired local JWT lease exists and is valid.
     """
     if not os.path.exists(LEASE_FILE):
         return False
     
     try:
-        cipher = Fernet(ENCRYPTION_KEY)
-        with open(LEASE_FILE, 'rb') as f:
-            data = cipher.decrypt(f.read())
-        lease = json.loads(data)
+        with open(LEASE_FILE, 'r') as f:
+            lease_token = f.read()
         
-        # Check if expired
-        if time.time() > lease.get('expires_at', 0):
+        # Verify the JWT token using the public key
+        # 'verify_exp=True' checks the 'exp' claim for expiration
+        # 'verify_signature=True' checks the signature against PUBLIC_KEY_PEM
+        decoded_lease = jwt.decode(lease_token, PUBLIC_KEY_PEM, algorithms=["RS256"], options={"verify_exp": True, "verify_signature": True})
+        
+        # Additional check: ensure the fingerprint in the lease matches the current machine
+        current_fingerprint = get_hardware_fingerprint()
+        if decoded_lease.get('fingerprint') != current_fingerprint:
             return False
-            
+
         return True
-    except Exception:
+    except jwt.ExpiredSignatureError:
+        print("Local lease expired.")
+        return False
+    except jwt.InvalidTokenError as e:
+        print(f"Invalid local lease token: {e}")
+        return False
+    except Exception as e:
+        print(f"Error checking local lease: {e}")
         return False
 
-def save_local_lease(token_data):
+def save_local_lease(lease_token: str):
     """
-    Saves a lease file locally after successful activation.
-    Lease duration: 30 days
+    Saves the JWT lease token locally.
     """
-    lease = {
-        "expires_at": time.time() + (30 * 24 * 60 * 60),
-        "data": token_data
-    }
-    
-    cipher = Fernet(ENCRYPTION_KEY)
-    encrypted_data = cipher.encrypt(json.dumps(lease).encode())
-    
-    with open(LEASE_FILE, 'wb') as f:
-        f.write(encrypted_data)
+    try:
+        with open(LEASE_FILE, 'w') as f:
+            f.write(lease_token)
+    except Exception as e:
+        print(f"Error saving local lease: {e}")
