@@ -138,3 +138,21 @@
 2026-06-07 18:43:19,869 - FileMaster - DEBUG - Ejecutando compare_files: 1034 esperados, 1104 encontrados (ignorar_caso=True)
 2026-06-07 18:43:19,870 - FileMaster - INFO - Resultado compare_files: 843 encontrados, 191 faltantes, 259 sobrantes
 2026-06-07 18:43:19,870 - FileMaster - INFO - run_comparison completado. Encontrados: 843, Faltantes: 191, Sobrantes: 259
+2026-06-07 22:17:47,657 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 22:17:48,476 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
+2026-06-07 22:17:53,334 - FileMaster - DEBUG - Configuración cargada con éxito: {'mode': 'compare', 'last_folder': '/Users/quiqueoso/Downloads', 'last_source_excel': '/Users/quiqueoso/FileMaster/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_excel': '/Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_output': '/Users/quiqueoso/Downloads', 'recursive': True, 'ignore_ext': True, 'ignore_case': True, 'preprocess': False, 'lang': 'es', 'last_template': '', 'theme': 'light'}
+2026-06-07 22:17:53,334 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 22:17:53,334 - FileMaster - INFO - Idioma de interfaz cambiado a: es
+2026-06-07 22:18:04,929 - FileMaster - DEBUG - Configuración guardada en filechecker_config.json: {'mode': 'compare', 'last_folder': '/Users/quiqueoso/Downloads', 'last_source_excel': '/Users/quiqueoso/FileMaster/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_excel': '/Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_output': '/Users/quiqueoso/Downloads', 'recursive': True, 'ignore_ext': True, 'ignore_case': True, 'preprocess': False, 'lang': 'es', 'last_template': '', 'theme': 'light'}
+2026-06-07 22:18:04,931 - FileMaster - INFO - Iniciando procesamiento de tarea...
+2026-06-07 22:18:04,934 - FileMaster - INFO - Iniciando run_comparison. Origen: /Users/quiqueoso/Downloads, Maestro: /Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx
+2026-06-07 22:18:04,983 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['Archivo']
+2026-06-07 22:18:04,992 - FileMaster - INFO - Cargados con éxito 1034 registros de Excel desde /Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx
+2026-06-07 22:18:04,992 - FileMaster - DEBUG - Plantilla de columnas del maestro: ['Archivo']
+2026-06-07 22:18:04,992 - FileMaster - INFO - Iniciando escaneo de carpeta: /Users/quiqueoso/Downloads (recursivo=True, ignorar_ext=True, preprocesar=False)
+2026-06-07 22:18:05,139 - FileMaster - INFO - Escaneo finalizado. Encontrados 1104 archivos únicos.
+2026-06-07 22:18:05,140 - FileMaster - DEBUG - Ejecutando compare_files: 1034 esperados, 1104 encontrados (ignorar_caso=True)
+2026-06-07 22:18:05,140 - FileMaster - INFO - Resultado compare_files: 843 encontrados, 191 faltantes, 259 sobrantes
+2026-06-07 22:18:05,140 - FileMaster - INFO - run_comparison completado. Encontrados: 843, Faltantes: 191, Sobrantes: 259
+2026-06-07 22:20:14,543 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 22:20:15,239 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
