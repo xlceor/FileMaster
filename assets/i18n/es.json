@@ -1,7 +1,8 @@
 {
   "app_title": "FileChecker Enterprise",
   "nav_config": "⚙  Configuración",
-  "nav_results": "📊  Resultados",
+  "nav_results": "  Resultados",
+  "nav_dashboard": "  Tablero",
   "header_config": "Configuración del Sistema",
   "header_results": "Panel de Resultados",
   "status_ready": "Sistema Listo",
@@ -58,5 +59,15 @@
   "help_tooltip_preprocess": "Extrae el texto antes del primer guion (-) o guion bajo (_) para comparar (ej. 'placa123-A' se compara como 'placa123').",
   
   "help_title": "Guía de Formato de Excel",
-  "help_desc": "Requisitos para archivos Excel:\n\n1. El primer renglón debe ser el encabezado (título de columna).\n2. El programa busca la primera columna o una columna llamada 'placas'.\n3. Los datos de comparación inician a partir de la fila 2.\n4. Soporta formatos .xlsx y .xls."
+  "help_desc": "Requisitos para archivos Excel:\n\n1. El primer renglón debe ser el encabezado (título de columna).\n2. El programa busca la primera columna o una columna llamada 'placas'.\n3. Los datos de comparación inician a partir de la fila 2.\n4. Soporta formatos .xlsx y .xls.",
+  "db_no_data": "No hay datos de comparación disponibles para mostrar en el Tablero. Por favor, realice una comparación en la pestaña de Configuración primero.",
+  "db_summary_expected": "ESPERADOS (MAESTRO)",
+  "db_summary_found": "ENCONTRADOS",
+  "db_summary_missing": "FALTANTES",
+  "db_summary_extra": "SOBRANTES",
+  "db_completion_rate": "TASA DE FINALIZACIÓN",
+  "db_distribution": "DISTRIBUCIÓN DE RESULTADOS",
+  "db_found_percent": "Encontrados: {percent}%",
+  "db_missing_percent": "Faltantes: {percent}%",
+  "header_dashboard": "Tablero Analítico"
 }

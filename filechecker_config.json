@@ -9,5 +9,6 @@
   "ignore_case": true,
   "preprocess": false,
   "lang": "es",
+  "last_template": "",
   "theme": "light"
 }

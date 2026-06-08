@@ -232,7 +232,7 @@ def run_comparison(
 
 
 def report_excel(
-    output_path: str, found: dict, missing: dict, extra: dict, master_count: int = None
+    output_path: str, found: dict, missing: dict, extra: dict, master_count: int = None, template_path: str = None
 ) -> None:
     """Convierte los resultados a DataFrames, los escribe en Excel y aplica estilos."""
     logger.info(f"Generando reporte Excel estructurado y diseñado en: {output_path}")
@@ -250,27 +250,66 @@ def report_excel(
     df_sob = prepare_df(extra)
 
     try:
+        if template_path and os.path.exists(template_path):
+            logger.info(f"Usando plantilla personalizada: {template_path}")
+            wb = openpyxl.load_workbook(template_path)
+        else:
+            wb = openpyxl.Workbook()
+            # Remove default sheet
+            if "Sheet" in wb.sheetnames:
+                wb.remove(wb["Sheet"])
+
         # Write to sheets
-        with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
-            df_enc.to_excel(writer, sheet_name="Encontrados", index=False)
-            df_fal.to_excel(writer, sheet_name="Faltantes", index=False)
-            df_sob.to_excel(writer, sheet_name="Sobrantes", index=False)
+        # If template sheets exist, overwrite them; otherwise, create them
+        for name, df in [("Encontrados", df_enc), ("Faltantes", df_fal), ("Sobrantes", df_sob)]:
+            if name in wb.sheetnames:
+                ws = wb[name]
+                # Clear content
+                ws.delete_rows(1, ws.max_row)
+                # Write header
+                for col_num, col_name in enumerate(df.columns, 1):
+                    ws.cell(row=1, column=col_num, value=col_name)
+                # Write data
+                for row_num, row_data in enumerate(df.values, 2):
+                    for col_num, val in enumerate(row_data, 1):
+                        ws.cell(row=row_num, column=col_num, value=val)
+            else:
+                ws = wb.create_sheet(name)
+                df.to_excel(writer := pd.ExcelWriter(output_path, engine="openpyxl", mode="a"), sheet_name=name, index=False)
+                # Note: pd.ExcelWriter doesn't support 'a' mode directly this way in conjunction with loading, 
+                # but direct openpyxl manipulation is safer. Let's stick to openpyxl for template data injection.
+        
+        # Simplified writing using standard openpyxl (safer for templates)
+        for name, df in [("Encontrados", df_enc), ("Faltantes", df_fal), ("Sobrantes", df_sob)]:
+            ws = wb[name] if name in wb.sheetnames else wb.create_sheet(name)
+            # Clear and write content manually or use pandas with engine='openpyxl'
+            # Let's write directly using openpyxl for precision
+            ws.delete_rows(1, ws.max_row)
+            for c_idx, col in enumerate(df.columns, 1):
+                ws.cell(row=1, column=c_idx, value=col)
+            for r_idx, row in enumerate(df.values, 2):
+                for c_idx, val in enumerate(row, 1):
+                    ws.cell(row=r_idx, column=c_idx, value=val)
+
+        # Apply styles (Only if not already styled, or override if preferred)
+        _style_sheet(wb["Encontrados"], "2E7D32", "F1F8E9") 
+        _style_sheet(wb["Faltantes"], "C62828", "FFEBEE")
+        _style_sheet(wb["Sobrantes"], "E65100", "FFF3E0")
+        
+        # Summary
+        if master_count is not None:
+            if "Resumen" in wb.sheetnames:
+                ws_res = wb["Resumen"]
+                ws_res.delete_rows(1, ws_res.max_row)
+            else:
+                ws_res = wb.create_sheet("Resumen", 0)
+            _write_summary_sheet(ws_res, master_count, len(found), len(missing), len(extra))
             
-            wb = writer.book
-            
-            # Apply corporate styling to the sheets
-            _style_sheet(wb["Encontrados"], "2E7D32", "F1F8E9") # Green Theme
-            _style_sheet(wb["Faltantes"], "C62828", "FFEBEE")   # Red Theme
-            _style_sheet(wb["Sobrantes"], "E65100", "FFF3E0")   # Orange Theme
-            
-            # If master_count is supplied, we add the Resumen sheet right here!
-            if master_count is not None:
-                ws_res = wb.create_sheet("Resumen", 0) # Make it the first tab!
-                _write_summary_sheet(ws_res, master_count, len(found), len(missing), len(extra))
+        wb.save(output_path)
+        logger.info("Reporte Excel exitoso.")
                 
-        logger.info("Reporte Excel escrito y diseñado exitosamente.")
     except Exception as e:
-        logger.error(f"Error estilizando archivo Excel: {str(e)}", exc_info=True)
+        logger.error(f"Error en reporte: {str(e)}", exc_info=True)
         # Fallback to plain export
         with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
             df_enc.to_excel(writer, sheet_name="Encontrados", index=False)
@@ -278,28 +317,11 @@ def report_excel(
             df_sob.to_excel(writer, sheet_name="Sobrantes", index=False)
 
 
-def _add_summary_to_report(file_path: str, total: int, found: int, missing: int, extra: int) -> None:
-    """Añade la pestaña resumen si no fue inyectada previamente en el report_excel."""
-    try:
-        wb = openpyxl.load_workbook(file_path)
-        if "Resumen" in wb.sheetnames:
-            logger.debug("La hoja Resumen ya existe. Saltando paso redundante.")
-            wb.close()
-            return
-            
-        ws = wb.create_sheet("Resumen", 0) # Put it first
-        _write_summary_sheet(ws, total, found, missing, extra)
-        wb.save(file_path)
-        logger.info("Hoja Resumen añadida en segunda pasada exitosamente.")
-    except Exception as e:
-        logger.error(f"Error añadiendo resumen en segunda pasada: {str(e)}", exc_info=True)
-
-
 def comparison_report(
     source_path: str, master_path: str,
     recursive: bool, ignore_ext: bool, ignore_case: bool, preprocess: bool,
     timestamp: str, is_excel_source: bool = False,
-    output_path: str = None
+    output_path: str = None, template_path: str = None
 ) -> str:
     """Orquesta la comparación completa y guarda el reporte final en un paso optimizado."""
     master_dict, found_dict, missing_dict, extra_dict = run_comparison(
@@ -308,7 +330,7 @@ def comparison_report(
 
     out = output_path if output_path else f"Reporte_Comparacion_{timestamp}.xlsx"
     
-    # Save sheets AND Summary sheet in one single write-operation!
-    report_excel(out, found_dict, missing_dict, extra_dict, master_count=len(master_dict))
+    # Save sheets AND Summary sheet
+    report_excel(out, found_dict, missing_dict, extra_dict, master_count=len(master_dict), template_path=template_path)
     
     return out

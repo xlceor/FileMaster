@@ -11,6 +11,7 @@ from ui.theme import apply_theme
 from ui.components.sidebar import Sidebar
 from ui.components.config_view import ConfigView
 from ui.components.results_view import ResultsView
+from ui.components.dashboard_view import DashboardView
 from utils.config_manager import load_config, save_config
 from utils.logger import logger
 from utils.translator import t, translator
@@ -20,8 +21,7 @@ from utils.dnd_helper import TkinterDnD, HAS_DND
 from core.reports import (
     export_names_report, 
     run_comparison, 
-    report_excel, 
-    _add_summary_to_report
+    report_excel
 )
 
 class FileCheckerApp(TkinterDnD.Tk if HAS_DND else tk.Tk):
@@ -66,6 +66,7 @@ class FileCheckerApp(TkinterDnD.Tk if HAS_DND else tk.Tk):
             "ignore_ext":   tk.BooleanVar(value=self.cfg.get("ignore_ext", False)),
             "ignore_case":  tk.BooleanVar(value=self.cfg.get("ignore_case", True)),
             "preprocess":   tk.BooleanVar(value=self.cfg.get("preprocess", False)),
+            "template":     tk.StringVar(value=self.cfg.get("last_template", "")),
             "status":       tk.StringVar(value=t("status_ready")),
         }
 
@@ -139,6 +140,18 @@ class FileCheckerApp(TkinterDnD.Tk if HAS_DND else tk.Tk):
             if "results" not in self.views:
                 self.views["results"] = ResultsView(self.view_area, on_export=self._handle_export)
             self.views["results"].pack(fill="both", expand=True)
+            
+        elif target == "dashboard":
+            if "dashboard" not in self.views:
+                self.views["dashboard"] = DashboardView(self.view_area, results_data=self.last_results)
+            else:
+                self.views["dashboard"].update_data(self.last_results)
+            if "dashboard" not in self.views:
+                self.views["dashboard"] = DashboardView(self.view_area, results_data=self.last_results)
+            else:
+                self.views["dashboard"].update_data(self.last_results)
+            self.views["dashboard"].pack(fill="both", expand=True)
+            self.views["dashboard"].refresh_theme()
 
     def _handle_run(self):
         if self.is_running: return
@@ -279,6 +292,8 @@ class FileCheckerApp(TkinterDnD.Tk if HAS_DND else tk.Tk):
             self.views["config"].refresh_translations()
         if "results" in self.views:
             self.views["results"].refresh_translations()
+        if "dashboard" in self.views:
+            self.views["dashboard"].refresh_translations()
             
         self._refresh_app_translations()
         self._save_state()
@@ -295,6 +310,8 @@ class FileCheckerApp(TkinterDnD.Tk if HAS_DND else tk.Tk):
         self.sidebar.refresh_theme()
         if "config" in self.views:
             self.views["config"].refresh_theme()
+        if "dashboard" in self.views:
+            self.views["dashboard"].refresh_theme()
             
         self._save_state()
 
@@ -302,6 +319,8 @@ class FileCheckerApp(TkinterDnD.Tk if HAS_DND else tk.Tk):
         # Update dynamic header title
         if self.active_view == "config":
             self.header_title.configure(text=t("header_config"))
+        elif self.active_view == "dashboard":
+            self.header_title.configure(text=t("header_dashboard"))
         else:
             self.header_title.configure(text=t("header_results"))
             
@@ -326,6 +345,7 @@ class FileCheckerApp(TkinterDnD.Tk if HAS_DND else tk.Tk):
             "ignore_case":       self.vars["ignore_case"].get(),
             "preprocess":        self.vars["preprocess"].get(),
             "lang":              self.current_lang,
+            "last_template":     self.vars["template"].get(),
             "theme":             self.current_theme
         })
 

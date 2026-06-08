@@ -90,3 +90,51 @@
 2026-06-07 12:00:26,908 - FileMaster - DEBUG - Configuración cargada con éxito: {'mode': 'compare', 'last_folder': '/Users/quiqueoso/Downloads', 'last_source_excel': '/Users/quiqueoso/FileMaster/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_excel': '/Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_output': '/Users/quiqueoso/Downloads', 'recursive': True, 'ignore_ext': True, 'ignore_case': True, 'preprocess': False, 'lang': 'es', 'theme': 'light'}
 2026-06-07 12:00:26,908 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
 2026-06-07 12:00:26,908 - FileMaster - INFO - Idioma de interfaz cambiado a: es
+2026-06-07 18:02:59,607 - FileMaster - DEBUG - Ejecutando compare_files: 3 esperados, 3 encontrados (ignorar_caso=False)
+2026-06-07 18:02:59,607 - FileMaster - INFO - Resultado compare_files: 2 encontrados, 1 faltantes, 1 sobrantes
+2026-06-07 18:02:59,607 - FileMaster - DEBUG - Ejecutando compare_files: 2 esperados, 3 encontrados (ignorar_caso=True)
+2026-06-07 18:02:59,607 - FileMaster - INFO - Resultado compare_files: 2 encontrados, 0 faltantes, 1 sobrantes
+2026-06-07 18:02:59,608 - FileMaster - DEBUG - Ejecutando compare_dicts: 3 esperados, 3 encontrados
+2026-06-07 18:02:59,608 - FileMaster - INFO - Resultado compare_dicts: 2 encontrados, 1 faltantes, 1 sobrantes
+2026-06-07 18:02:59,909 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner']
+2026-06-07 18:02:59,914 - FileMaster - INFO - Cargados con éxito 3 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-7/test_load_excel_basic0/master.xlsx
+2026-06-07 18:02:59,920 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Info', 'Info_2']
+2026-06-07 18:02:59,921 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-7/test_load_excel_unnamed_handli0/unnamed.xlsx
+2026-06-07 18:02:59,928 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['Placa', 'Detail']
+2026-06-07 18:02:59,930 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-7/test_load_excel_special_proces0/special.xlsx
+2026-06-07 18:02:59,932 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner', 'Detail']
+2026-06-07 18:02:59,934 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-7/test_load_csv0/data.csv
+2026-06-07 18:02:59,938 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['placas', 'Owner']
+2026-06-07 18:02:59,939 - FileMaster - INFO - Cargados con éxito 2 registros de Excel desde /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-7/test_load_json0/data.json
+2026-06-07 18:02:59,941 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-7/test_scan_folder_non_recursive0 (recursivo=False, ignorar_ext=False, preprocesar=False)
+2026-06-07 18:02:59,941 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 18:02:59,942 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-7/test_scan_folder_recursive0 (recursivo=True, ignorar_ext=False, preprocesar=False)
+2026-06-07 18:02:59,942 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 18:02:59,943 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-7/test_scan_folder_ignore_ext0 (recursivo=False, ignorar_ext=True, preprocesar=False)
+2026-06-07 18:02:59,943 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 18:02:59,944 - FileMaster - INFO - Iniciando escaneo de carpeta: /private/var/folders/rk/ybjhm7z57n1dq08sk36_0qx80000gn/T/pytest-of-quiqueoso/pytest-7/test_scan_folder_preprocess0 (recursivo=False, ignorar_ext=False, preprocesar=True)
+2026-06-07 18:02:59,944 - FileMaster - INFO - Escaneo finalizado. Encontrados 2 archivos únicos.
+2026-06-07 18:33:35,975 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 18:33:36,772 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
+2026-06-07 18:33:43,049 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 18:33:43,369 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
+2026-06-07 18:35:52,769 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 18:35:53,274 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
+2026-06-07 18:37:35,659 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 18:37:36,476 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
+2026-06-07 18:42:54,615 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 18:42:55,178 - FileMaster - WARNING - La biblioteca native tkdnd no es compatible con este intérprete Tcl/Tk: can't find package tkdnd. Desactivando arrastrar y soltar.
+2026-06-07 18:43:01,224 - FileMaster - DEBUG - Configuración cargada con éxito: {'mode': 'compare', 'last_folder': '/Users/quiqueoso/Downloads', 'last_source_excel': '/Users/quiqueoso/FileMaster/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_excel': '/Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_output': '/Users/quiqueoso/Downloads', 'recursive': True, 'ignore_ext': True, 'ignore_case': True, 'preprocess': False, 'lang': 'es', 'theme': 'light'}
+2026-06-07 18:43:01,224 - FileMaster - DEBUG - Traducciones cargadas con éxito para idioma 'es' desde /Users/quiqueoso/FileMaster/assets/i18n/es.json
+2026-06-07 18:43:01,224 - FileMaster - INFO - Idioma de interfaz cambiado a: es
+2026-06-07 18:43:19,679 - FileMaster - DEBUG - Configuración guardada en filechecker_config.json: {'mode': 'compare', 'last_folder': '/Users/quiqueoso/Downloads', 'last_source_excel': '/Users/quiqueoso/FileMaster/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_excel': '/Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx', 'last_output': '/Users/quiqueoso/Downloads', 'recursive': True, 'ignore_ext': True, 'ignore_case': True, 'preprocess': False, 'lang': 'es', 'last_template': '', 'theme': 'light'}
+2026-06-07 18:43:19,680 - FileMaster - INFO - Iniciando procesamiento de tarea...
+2026-06-07 18:43:19,693 - FileMaster - INFO - Iniciando run_comparison. Origen: /Users/quiqueoso/Downloads, Maestro: /Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx
+2026-06-07 18:43:19,728 - FileMaster - DEBUG - Columnas cargadas y saneadas en Excel: ['Archivo']
+2026-06-07 18:43:19,736 - FileMaster - INFO - Cargados con éxito 1034 registros de Excel desde /Users/quiqueoso/Downloads/Reporte_Nombres_2026-06-06_13-58.xlsx
+2026-06-07 18:43:19,736 - FileMaster - DEBUG - Plantilla de columnas del maestro: ['Archivo']
+2026-06-07 18:43:19,736 - FileMaster - INFO - Iniciando escaneo de carpeta: /Users/quiqueoso/Downloads (recursivo=True, ignorar_ext=True, preprocesar=False)
+2026-06-07 18:43:19,869 - FileMaster - INFO - Escaneo finalizado. Encontrados 1104 archivos únicos.
+2026-06-07 18:43:19,869 - FileMaster - DEBUG - Ejecutando compare_files: 1034 esperados, 1104 encontrados (ignorar_caso=True)
+2026-06-07 18:43:19,870 - FileMaster - INFO - Resultado compare_files: 843 encontrados, 191 faltantes, 259 sobrantes
+2026-06-07 18:43:19,870 - FileMaster - INFO - run_comparison completado. Encontrados: 843, Faltantes: 191, Sobrantes: 259

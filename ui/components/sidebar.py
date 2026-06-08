@@ -21,6 +21,7 @@ class Sidebar(ttk.Frame):
         # Nav Buttons
         self.btn_config = self._nav_button(t("nav_config"), "config")
         self.btn_results = self._nav_button(t("nav_results"), "results")
+        self.btn_dashboard = self._nav_button(t("nav_dashboard"), "dashboard")
         
         # Footer Container
         footer_container = ttk.Frame(self, style='Sidebar.TFrame')
@@ -69,6 +70,7 @@ class Sidebar(ttk.Frame):
         """Actualiza los textos traducibles de la barra lateral."""
         self.btn_config.configure(text=t("nav_config"))
         self.btn_results.configure(text=t("nav_results"))
+        self.btn_dashboard.configure(text=t("nav_dashboard"))
         # Highlight active language button
         from utils.translator import translator
         current = translator.current_lang

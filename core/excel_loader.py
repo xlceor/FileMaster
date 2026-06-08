@@ -47,10 +47,16 @@ def load_excel(path: str, ignore_ext: bool = False, ignore_case: bool = False, p
     names.columns = new_columns
     logger.debug(f"Columnas cargadas y saneadas en Excel: {list(names.columns)}")
         
-    row_name = "placas"
-    if row_name in names.columns:
-        column_id = row_name
-    else:
+    possible_names = ["placa", "placas"]
+
+    column_id = None
+
+    for col in names.columns:
+        if str(col).strip().lower() in possible_names:
+            column_id = col
+            break
+
+    if column_id is None:
         column_id = names.columns[0]
 
     # Initialize clean_id from the source column and strip whitespace

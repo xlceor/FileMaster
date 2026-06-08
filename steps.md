@@ -53,7 +53,7 @@ This document tracks the phased implementation of features, architectural improv
 - [ ] **3.2 Business Intelligence / Dashboard View**
   - [ ] Implement a dedicated "Dashboard" panel.
   - [ ] Integrate basic charts (completion percentage pie chart, mismatch bar graphs) using a lightweight chart library or canvas.
-- [ ] **3.3 Multi-Format Connectivity**
+- [x] **3.3 Multi-Format Connectivity**
   - [ ] Extend loader in `core/excel_loader.py` to support CSV and JSON file inputs.
   - [ ] Standardize internal structures to support arbitrary key-value mappings for comparisons.
 - [ ] **3.4 Allow Templates**
