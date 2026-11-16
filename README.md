@@ -217,4 +217,3 @@ Proprietary software. © FileMaster. All rights reserved. Use is subject to the 
 ## Author
 
 **Carlos Osorio**: Systems Alchemist
-[LinkedIn](#) · [Portfolio](#) · [Email](#)
