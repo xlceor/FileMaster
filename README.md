@@ -1,76 +1,60 @@
 # FileMaster
 
-### Professional file auditing — from days to seconds.
-
-**Verify, compare and reconcile thousands of files against your official records, and generate auditable executive reports with a single click.**
+### Audit thousands of files against your master records in seconds, and get an auditable report.
 
 ![Python](https://img.shields.io/badge/Python-3.13-blue?logo=python&logoColor=white)
 ![Platform](https://img.shields.io/badge/Platform-Windows%20%7C%20macOS%20%7C%20Linux-lightgrey)
 ![UI](https://img.shields.io/badge/UI-Tkinter%20%2B%20ttk-5E35B1)
 ![Data](https://img.shields.io/badge/Data-pandas%20%2B%20openpyxl-150458)
-![License](https://img.shields.io/badge/License-Proprietary-2E7D32)
-![Tests](https://img.shields.io/badge/Tests-pytest-F9A825)
+
+<p align="center">
+<img width="850" alt="Captura de pantalla 2026-06-26 113314" src="https://github.com/user-attachments/assets/ad0fdc00-9a5a-46c3-9131-4fd7eaf66761" />
+</p>
+
+
+
 
 ---
 
-## What is FileMaster?
+## The problem
 
-**FileMaster** is an enterprise desktop application for **file auditing and reconciliation** against structured records (Excel, CSV, JSON). It is built for organizations that need to guarantee that their physical or digital files match their master records — and to prove it with professional, presentation-ready reports.
+Organizations that keep physical or digital files (invoices, contracts, records) need to prove those files match their official spreadsheet. Doing this by hand means opening a folder and a spreadsheet side by side and checking row by row. It takes days, it is easy to get wrong, and it leaves no evidence behind.
 
-> **The problem it solves:** manually auditing thousands of files against a spreadsheet takes **days — sometimes over a week** — is error-prone, and leaves no auditable evidence. FileMaster does it in **seconds** and produces a formatted executive report.
+## The solution
 
----
+FileMaster is a desktop application that reconciles a folder (or another dataset) against a **master record** and produces a formatted Excel report with three answers:
 
-## 💰 Savings: on average, **~$230 USD/week**
-
-The calculation is grounded in the real cost of the manual work that FileMaster eliminates.
-
-### Calculation basis
-
-| Variable | Value |
+| Result | Meaning |
 |---|---|
-| Assumed salary | **$8,000 USD/month** |
-| Estimated hourly rate | **~$46 USD/h** *(based on 173 h/month)* |
-| Manual process per cycle | **3–7+ days** *(24–56+ h)* |
-| With FileMaster per cycle | **< 15 minutes** |
-| Time reduction | **> 95 %** |
+| **Found** | The record exists in both places |
+| **Missing** | The master lists it, but no file exists |
+| **Extra** | A file exists, but the master doesn't list it |
 
-### Amortized weekly savings
-
-```
-Recovered manual work:           ~5 h/week (conservative estimate
-                                 already net of preparation and verification)
-Hourly rate:                     ~$46 USD/h
-─────────────────────────────────────────────────
-Weekly savings:                  ~$230 USD/week
-Annual savings per user:         ~$11,960 USD/year
-```
-
-> **Transparency note:** actual savings **scale with file volume, audit frequency and your organization's hourly cost**. The $230 USD/week figure is a conservative estimate; error reduction and the value of auditable evidence are additional, unquantified benefits.
+**Real run (from the screenshot above):** 1,815 expected records → **1,606 found · 209 missing · 185 extra → 88.5% completion**, reconciled and reported in a single click.
 
 ---
 
-## ✨ Features
+## Screenshots
 
-### 🔍 File reconciliation — 5 operating modes
+| Configuration | Results dashboard |
+|---|---|
+| <img src="assets/screenshots/configuration.png" alt="Configuration view" width="420"/> | <img src="assets/screenshots/dashboard.png" alt="Dashboard view" width="420"/> |
 
-- **Folder → Excel export**
-- **Folder vs Master Excel**
-- **Excel vs Master Excel**
-- **CSV vs Master Excel**
-- **JSON vs Master Excel**
+---
 
-### 🧩 Smart matching engine
+## Features
 
-Normalization strategies that eliminate false negatives:
+### Three operating modes
 
-- Recursive subfolder scanning
-- Case-insensitive comparisons
-- Extension-agnostic matching
-- Filename prefix extraction
-- Automatic data cleaning and normalization
+1. **Export folder names**: scan a folder and export its file names to Excel (recursive, extension-agnostic options).
+2. **Compare folder vs Master Excel**: check files on disk against the official record.
+3. **Compare Excel vs Master Excel**: reconcile two datasets against each other.
 
-**Examples:**
+**Supported input formats:** `.xlsx`, `.xls`, `.csv`, `.json`. **Output:** formatted `.xlsx`.
+
+### Smart matching
+
+Real-world file names are messy, so FileMaster normalizes both sides before comparing: case-insensitive, extension-agnostic, prefix extraction and cleanup of copy suffixes.
 
 | Physical file | Master record | Match |
 |---|---|---|
@@ -79,120 +63,73 @@ Normalization strategies that eliminate false negatives:
 | `AB123_photo.jpg` | `AB123` | ✅ |
 | `file (1).txt` | `file` | ✅ |
 
-### ⚡ High-performance engine
+### Professional Excel reports
 
-Built on **Python set algebra**:
+Generated with OpenPyXL, with optional injection into corporate templates.
 
-```python
-found   = expected & actual   # intersection
-missing = expected - actual   # difference
-extra   = actual - expected   # reverse difference
-```
+- **Resumen**: executive summary (expected, found, missing, extra, completion %)
+- **Encontrados / Faltantes / Sobrantes**: one sheet per category
+- Themed headers, zebra rows, color-coded categories and auto-sized columns
 
-**O(1)** lookups that let FileMaster process tens or hundreds of thousands of records in seconds.
+### Interface
 
-| Volume | Comparison time |
-|---|---|
-| 10,000 records | **< 2 s** |
-| 100,000 records | **< 10 s** |
-| 1,000,000 records | **< 60 s** *(with optimizations)* |
-
-### 📊 Professional Excel reports
-
-Generated with **OpenPyXL**, with optional injection into corporate templates.
-
-**Included sheets:**
-
-- **Resumen (Summary)** — executive dashboard: expected records, found, missing, extra and **completion percentage**.
-- **Encontrados (Found)** — matching records.
-- **Faltantes (Missing)** — expected records not found.
-- **Sobrantes (Extra)** — files present but unregistered.
-
-**Styling:** themed headers · zebra rows · color-coded categories · auto column sizing · consistent borders and alignment.
-
-### 🎨 Modern interface
-
-- **Light / Dark themes** with hot-swapping (affects widgets, tables, charts, scrollbars and dashboard).
-- **Drag & Drop** for folders and files (`.xlsx`, `.csv`, `.json`).
-- **Analytics dashboard** with a completion donut chart and a distribution bar chart.
-- **Tabbed navigation:** Configuration · Results · Dashboard.
-
-### 🌐 Internationalization (i18n)
-
-- Supported languages: **Spanish · English**.
-- **Instant language switching**, no restart required.
+- Light / Dark themes, switchable live
+- Spanish / English, switchable live, no restart
+- Drag & Drop for folders and files
+- Dashboard with a completion donut chart and a distribution bar chart
 
 ---
 
-## 🚀 Installation
+## Engineering highlights
 
-### Requirements
+This project is as much about design decisions as features.
 
-- **Python 3.13+**
-- Windows 10/11, macOS or Linux
+- **Set algebra for reconciliation.** Once both sides are normalized into sets, the whole comparison is three operations:
+  ```python
+  found   = expected & actual   # intersection
+  missing = expected - actual   # difference
+  extra   = actual - expected   # reverse difference
+  ```
+  Membership checks are O(1) on average; building and normalizing the sets is O(n), which is where the real time goes.
+- **Separation of concerns.** `core/` has zero UI dependencies, so the engine is testable and reusable on its own (see the programmatic example below).
+- **Offline-capable licensing.** The server issues an RS256-signed JWT lease bound to a hardware fingerprint (SHA-256 over CPU, motherboard and disk identifiers). The client verifies the signature locally with an embedded public key, so the app works without connectivity. Supports revocation and machine migration; the validation API is rate-limited.
+- **Hot-swappable i18n and themes.** A global `t(key, **kwargs)` translator and a theme layer update every widget live, including the charts.
+- **Automated builds.** GitHub Actions packages a standalone Windows binary with PyInstaller.
+
+---
+
+## Quick start
+
+### Pre-built binary
+
+Download the Windows executable (no Python required), launch it and activate your license.
 
 ### From source
 
+Requires **Python 3.13+**.
+
 ```bash
-# 1. Clone the repository
 git clone <repository-url>
 cd FileMaster
 
-# 2. Create a virtual environment (recommended)
 python -m venv .venv
 source .venv/bin/activate      # macOS/Linux
 .venv\Scripts\activate         # Windows
 
-# 3. Install dependencies
 pip install -r requirements.txt
-
-# 4. Run
 python filemaster_launcher.py
 ```
 
-### Main dependencies
-
-```txt
-pandas          # Tabular data manipulation
-openpyxl        # Advanced Excel manipulation
-tkinterdnd2     # Drag & Drop for Tkinter
-cryptography    # License cryptography
-pyjwt           # JSON Web Tokens for licensing
-psutil          # System fingerprinting
-requests        # License validation via API
-pytest          # Testing framework
-```
-
-### Precompiled binary
-
-End users are provided with a binary packaged via **PyInstaller** (`--onefile --windowed`), with no Python installation required.
-
----
-
-## ⚡ Quick start
-
-```
-1. Open FileMaster and activate your license.
-2. Select the operating mode (e.g. "Folder vs Master Excel").
-3. Drag the folder to audit and your master record (.xlsx).
-4. Click "Compare".
-5. Review the dashboard and export the Excel report.
-```
-
-**Programmatic usage:**
+### Using the engine programmatically
 
 ```python
 from core.scanner import scan_folder
 from core.excel_loader import load_excel
 from core.comparator import compare
 
-# 1. Recursively scan a folder
-actual = scan_folder("/path/to/folder", recursive=True)
-
-# 2. Load the master record
+actual   = scan_folder("/path/to/folder", recursive=True)
 expected = load_excel("/path/to/master.xlsx")
 
-# 3. Reconcile
 result = compare(expected, actual)
 print(f"Found:   {len(result.found)}")
 print(f"Missing: {len(result.missing)}")
@@ -201,162 +138,92 @@ print(f"Extra:   {len(result.extra)}")
 
 ---
 
-## 🏗️ Architecture
-
-### Core components
-
-| Module | Responsibility |
-|---|---|
-| `core/scanner.py` | Recursive file scanning |
-| `core/excel_loader.py` | Dataset loading and normalization |
-| `core/comparator.py` | High-performance reconciliation engine |
-| `core/reports.py` | Excel report generation |
-| `core/exceptions.py` | Custom exception definitions |
-| `utils/licensing.py` | License validation and JWT verification |
-| `utils/translator.py` | Internationalization system |
-| `utils/config_manager.py` | Configuration persistence |
-| `utils/usage_tracker.py` | Usage monitoring for trial limits |
-| `ui/` | Interface, views and dashboard |
-| `ui/components/` | Reusable widgets (sidebar, config, results, dashboard) |
-
-### Project structure
+## Architecture
 
 ```text
 FileMaster/
-├── core/                    # Business logic
-│   ├── scanner.py
-│   ├── excel_loader.py
-│   ├── comparator.py
-│   ├── reports.py
+├── core/                  # Business logic (no UI imports)
+│   ├── scanner.py         # Recursive file scanning
+│   ├── excel_loader.py    # Dataset loading and normalization
+│   ├── comparator.py      # Reconciliation engine
+│   ├── reports.py         # Excel report generation
 │   └── exceptions.py
-├── ui/                      # Tkinter interface
+├── ui/                    # Tkinter interface
 │   ├── app.py
-│   ├── license_prompt.py
 │   ├── theme.py
-│   └── components/
-├── utils/                   # Utilities
-│   ├── licensing.py
-│   ├── translator.py
-│   ├── config_manager.py
-│   ├── dnd_helper.py
-│   ├── logger.py
-│   └── usage_tracker.py
-├── assets/i18n/             # en.json · es.json
-├── tests/                   # pytest (scanner, excel_loader, comparator)
-├── docs/                    # Technical documentation
-│   └── license-server.md
-├── .github/workflows/       # CI/CD (PyInstaller)
-├── filemaster_launcher.py   # Entry point
-├── main.py                  # Alternative entry point
-├── config.py                # UI color palette
+│   ├── license_prompt.py
+│   └── components/        # sidebar, config, results, dashboard widgets
+├── utils/                 # licensing, translator, config, drag & drop, logging, usage tracking
+├── assets/i18n/           # en.json · es.json
+├── tests/                 # pytest suite
+├── docs/license-server.md # Licensing server architecture and API
+├── .github/workflows/     # CI build (PyInstaller)
+├── filemaster_launcher.py # Entry point
 └── requirements.txt
 ```
 
-**Code graph:** 558 nodes · 1,572 connections · 26 Python modules · 1 main entry point.
+**Desktop stack:** Python 3.13 · Tkinter/ttk · pandas · OpenPyXL · TkinterDnD2 · cryptography · PyJWT · psutil
+
+**Licensing server:** Next.js (App Router) · Supabase (PostgreSQL) · RS256 JWT · Vercel. Details in [`docs/license-server.md`](docs/license-server.md).
 
 ---
 
-## 🔐 Licensing system
+## Business case (illustrative)
 
-**Lifetime Single-Machine** model.
+The value comes from replacing recurring manual work. The estimate below is a model, not a measurement. Plug in your own numbers.
 
-### Activation flow
+| Variable | Assumption |
+|---|---|
+| Fully loaded cost | $8,000 USD/month ≈ **$46 USD/h** (173 h/month) |
+| Manual audit cycle | 24–56+ hours |
+| With FileMaster | < 15 minutes |
 
-1. The user enters their license key.
-2. On first activation, a **hardware fingerprint** (SHA-256) is generated.
-3. The fingerprint is permanently bound to the license.
-4. The server issues a **signed JWT lease**.
-5. The client verifies the token **offline** and operates without connectivity.
+```
+Savings per audit cycle = hours saved × hourly cost
+Example: 24 h × $46 ≈ $1,100 per audit
+```
 
-### Security features
-
-- **RSA-2048 cryptography**
-- **RS256-signed JWTs**
-- **Multi-source hardware fingerprinting** (CPU, motherboard, disk)
-- **Offline verification** with configurable expiration
-- **License revocation** support
-- **Machine migration** support
-- **Rate-limited** validation API
+Actual savings scale with file volume, audit frequency and local labor cost. Error reduction and the auditable evidence trail are additional benefits that this model does not price.
 
 ---
 
-## 🧪 Testing
+## Testing
 
 ```bash
 pytest tests/ -v
 ```
 
-| Module | Coverage |
-|---|---|
-| `test_scanner.py` | Recursive scanning |
-| `test_excel_loader.py` | Data loading and normalization |
-| `test_comparator.py` | Reconciliation algorithm |
-
-**Strategy:** unit tests for *core*, integration tests for complete flows, mocking of external dependencies, and edge-case validation.
+Unit tests cover the scanner, the Excel loader and the comparator. Test coverage for `reports.py` and `licensing.py` is on the roadmap.
 
 ---
 
-## 📦 Build & distribution
+## Roadmap
 
-The project includes a **GitHub Actions** workflow that packages with PyInstaller (`--onefile --windowed`) on `windows-latest` and publishes the `FileChecker-Windows` artifact.
+- [ ] Tests for report generation and licensing
+- [ ] PDF report export
+- [ ] Multithreaded scanning for very large folders
+- [ ] Time-series dashboard (compare audits over time)
+- [ ] Cloud API integration
+- [ ] Plugin system
+
+---
+
+## Build
 
 ```bash
 pyinstaller --onefile --windowed --name FileMaster filemaster_launcher.py
 ```
 
-> For commercial distribution, **PyArmor obfuscation** is recommended.
+---
+
+## License
+
+Proprietary software. © FileMaster. All rights reserved. Use is subject to the Lifetime Single-Machine license terms.
 
 ---
 
-## 🛠️ Tech stack
+## Author
 
-### Desktop application
-
-- **Python 3.13** · **Tkinter + ttk**
-- **pandas** · **OpenPyXL** · **TkinterDnD2**
-- **pathlib / os** for filesystem operations
-
-### Licensing server
-
-- **Next.js** (App Router)
-- **Supabase** (PostgreSQL)
-- **JWT (RS256)**
-- **Vercel**
-- **Rate limiting** against abuse
-
----
-
-## 🗺️ Roadmap
-
-- [ ] Support for additional input formats
-- [ ] Cloud API integration
-- [ ] PDF report export
-- [ ] Advanced dashboard with time series
-- [ ] Multithreaded processing
-- [ ] Plugin system
-
----
-
-## 📚 Additional documentation
-
-Licensing server architecture, API contracts, database schemas and deployment requirements:
-
-```text
-docs/license-server.md
-```
-
----
-
-## 📄 License
-
-**Proprietary software.**
-
-© FileMaster. All rights reserved.
-
-Use is subject to the terms of the acquired **Lifetime Single-Machine** license. See `LICENSE` or contact the commercial team for details.
-
----
-
-<p align="center"><strong>FileMaster</strong> — Turn days of manual auditing into seconds of auditable results.<br/><sub>Estimated average savings: <strong>~$230 USD/week</strong> · ~$11,960 USD/year per user.</sub></p>
-
----
+**Carlos Osorio<img width="1919" height="1079" alt="Captura de pantalla 2026-06-26 113314" src="https://github.com/user-attachments/assets/074e3dca-ee51-42bd-a254-51aa578b741c" />
+**: Python developer focused on desktop tools and data automation.
+[LinkedIn](#) · [Portfolio](#) · [Email](#)
