@@ -34,14 +34,6 @@ FileMaster is a desktop application that reconciles a folder (or another dataset
 
 ---
 
-## Screenshots
-
-| Configuration | Results dashboard |
-|---|---|
-| <img src="assets/screenshots/configuration.png" alt="Configuration view" width="420"/> | <img src="assets/screenshots/dashboard.png" alt="Dashboard view" width="420"/> |
-
----
-
 ## Features
 
 ### Three operating modes
