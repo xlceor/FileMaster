@@ -216,6 +216,5 @@ Proprietary software. © FileMaster. All rights reserved. Use is subject to the 
 
 ## Author
 
-**Carlos Osorio<img width="1919" height="1079" alt="Captura de pantalla 2026-06-26 113314" src="https://github.com/user-attachments/assets/074e3dca-ee51-42bd-a254-51aa578b741c" />
-**: Python developer focused on desktop tools and data automation.
+**Carlos Osorio**: Systems Alchemist
 [LinkedIn](#) · [Portfolio](#) · [Email](#)
